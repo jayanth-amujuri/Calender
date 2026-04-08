@@ -1,0 +1,227 @@
+/* --- Root & Wall Background --- */
+body { 
+  margin: 0; 
+  background-color: #f4f4f4; /* Base wall color */
+  background-image: radial-gradient(#d8d8d8 1px, transparent 1px);
+  background-size: 30px 30px; /* Subtle wall texture */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- Layout Container --- */
+.calendar-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  justify-content: center; /* Centered for a balanced look */
+  align-items: center;
+}
+
+.current-date-display {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #3498db;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.date-day { font-size: 40px; font-weight: 800; }
+.date-day-name { font-weight: 600; text-transform: uppercase; font-size: 14px; }
+
+/* --- Main Calendar Container (The Hanging Object) --- */
+.main-container {
+  flex: 1;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+  justify-content: center;
+}
+
+.wrapped-calendar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px; /* Space for the hook and wire */
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.2));
+  background: transparent; /* Allows wall to show behind hook */
+}
+
+/* --- Hanging & Spiral Elements --- */
+.hanging-point {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nail {
+  width: 10px;
+  height: 10px;
+  background: #2c3e50;
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.hook-wire {
+  width: 50px;
+  height: 40px;
+  border: 2.5px solid #333;
+  border-bottom: none;
+  border-radius: 25px 25px 0 0;
+  margin-top: -2px;
+}
+
+.spiral-binding {
+  position: absolute;
+  top: 52px; /* Sits exactly on the top edge of the image section */
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 10;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.spiral-ring {
+  width: 12px;
+  height: 24px;
+  background: transparent;
+  border: 2.5px solid #1a1a1a;
+  border-radius: 6px;
+  /* Masking the bottom to look like it enters the paper */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 85%); 
+}
+
+/* --- Content Sections (The Paper) --- */
+.image-section {
+  position: relative;
+  height: 350px;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  border-top: 5px solid #ccc; /* Cardboard backing thickness */
+  background: white;
+  z-index: 1;
+}
+
+.image-section img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+.month-bar {
+  position: absolute;
+  bottom: 0; 
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.month-bar button { background: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+
+.calendar-card {
+  position: relative;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  padding: 40px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* --- Internal Content --- */
+.card-content {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  z-index: 2;
+}
+
+.blue-wave {
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 110px;
+  background: #3498db;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.notes-column { flex: 1; }
+.ruled-lines { display: flex; flex-direction: column; }
+
+.note-line {
+  border: none;
+  border-bottom: 5px solid rgba(0, 0, 0, 0.441);
+  padding: 12px 0;
+  font-size: 15px;
+  outline: none;
+  background: transparent;
+}
+
+.note-line:focus { border-bottom-color: #3498db; }
+
+/* Grid Layout */
+.grid-column { flex: 1.5; }
+.grid-header { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 20px; }
+.day-label { text-align: center; font-weight: 700; font-size: 11px; color: #666; }
+
+.days-grid { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 12px; }
+
+.day-cell { 
+  text-align: center; 
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer; 
+  border-radius: 50%; 
+  border: 2px solid #e0e0e0;
+  background: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: #444;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-cell:hover { background: #f0f7ff; color: #3498db; }
+
+/* States */
+.blue-text { color: #3498db !important; }
+.faded { color: #ccc !important; }
+
+.active { 
+  background: #3498db !important; 
+  color: white !important;
+}
+
+.today {
+  background: #ff6b6b !important;
+  color: white !important;
+  border-color: #ff6b6b !important;
+  font-weight: 700;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+}
+
+.today:hover {
+  background: #ff5252 !important;
+  border-color: #ff5252 !important;
+  transform: scale(1.15);
+}
+
+.fade { opacity: 0; transform: translateY(10px); transition: 0.3s; }
