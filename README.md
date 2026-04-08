@@ -1,16 +1,64 @@
-# React + Vite
+# Calender
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite project that renders an interactive **wall calendar** UI with a fluid/animated background effect.
 
-Currently, two official plugins are available:
+## Tech Stack
+- React
+- Vite
+- JavaScript (ESM)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Prerequisites
+- Node.js (LTS recommended)
+- npm (comes with Node.js)
 
-## React Compiler
+## Install
+```bash
+# 1) clone
+git clone https://github.com/jayanth-amujuri/Calender.git
+cd Calender
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 2) install dependencies
+npm install
+```
 
-## Expanding the ESLint configuration
+## Dependencies
+Installed via `npm install` (from `package.json`):
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Runtime
+- `react`
+- `react-dom`
+- `three` (WebGL / 3D utilities used by the animated background)
+- `gsap` (animation utilities)
+
+### Dev
+- `vite`
+- `@vitejs/plugin-react`
+- `eslint` + related plugins/config
+
+## Run (Development)
+Start the dev server (Hot Module Reload enabled):
+```bash
+npm run dev
+```
+Vite will print a local URL (commonly `http://localhost:5173`). Open it in your browser.
+
+## Build
+Create a production build:
+```bash
+npm run build
+```
+
+## Preview (Production build locally)
+```bash
+npm run preview
+```
+
+## Project Structure
+- `index.html` - Vite entry HTML
+- `src/main.jsx` - React entry point
+- `src/App.jsx` - App layout (background + calendar)
+- `src/components/Calendar.jsx` - Calendar UI + date range selection + notes inputs
+- `src/components/LiquidEther.jsx` - Animated background effect
+
+## Notes
+- The calendar header images are loaded from Unsplash URLs inside `src/components/Calendar.jsx`. 
