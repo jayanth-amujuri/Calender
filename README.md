@@ -1,6 +1,7 @@
 # Calender
 
-A React + Vite project that renders an interactive **wall calendar** UI with a fluid/animated background effect.
+## Description
+Calender is a **React + Vite** web app that shows a modern, hanging-style monthly calendar UI. You can navigate between months, click dates to select a range, and type quick notes. The page also includes an animated, interactive fluid background effect (built with **Three.js**) to give the UI a more dynamic look.
 
 ## Tech Stack
 - React
@@ -61,4 +62,4 @@ npm run preview
 - `src/components/LiquidEther.jsx` - Animated background effect
 
 ## Notes
-- The calendar header images are loaded from Unsplash URLs inside `src/components/Calendar.jsx`. 
+- The calendar header images are loaded from Unsplash URLs inside `src/components/Calendar.jsx.
