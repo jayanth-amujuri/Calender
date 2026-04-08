@@ -65,24 +65,20 @@ function Calendar() {
 
   return (
     <div className="calendar-layout">
-      {/* Main Container */}
       <div className={`main-container ${animate ? "fade" : ""}`}>
         <div className="wrapped-calendar">
           
-          {/* Wall Hanging Hook */}
           <div className="hanging-point">
             <div className="nail"></div>
             <div className="hook-wire"></div>
           </div>
 
-          {/* Spiral Binding Rings */}
           <div className="spiral-binding">
             {Array.from({ length: 22 }).map((_, i) => (
               <div key={i} className="spiral-ring"></div>
             ))}
           </div>
 
-          {/* Large Image Section */}
           <div className="image-section">
             <img src={images[month]} alt="header" />
             <div className="month-bar">
@@ -95,12 +91,10 @@ function Calendar() {
             </div>
           </div>
 
-          {/* Minimalist Card Layout */}
           <div className="calendar-card">
             <div className="blue-wave"></div>
             
             <div className="card-content">
-              {/* Notes Section */}
               <div className="notes-column">
                 <h3>Notes</h3>
                 <div className="ruled-lines">
@@ -119,7 +113,6 @@ function Calendar() {
                 </div>
               </div>
 
-              {/* Calendar Grid Section */}
               <div className="grid-column">
                 <div className="grid-header">
                   {["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"].map(d => (
